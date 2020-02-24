@@ -14,12 +14,14 @@ fun main() {
 
     println("Sum of all numbers is " + array.sum())
 
+        //Вывод количества уникальных чисел через SET
     val set = mutableSetOf<Int>()
     for (i in array) {
         set.add(i)
     }
     println("Count of unique numbers is " + set.size)
 
+        //Создаем MAP из чисел и НОД
     var map = mutableMapOf<Int, Int>()
     for (i in array) {
         val temp = gcd(i, array.sum())
