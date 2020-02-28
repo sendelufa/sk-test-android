@@ -13,37 +13,35 @@ fun main() {
 
     println("Sum of all numbers is " + array.sum())
 
-        //Вывод количества уникальных чисел через SET
+    //Вывод количества уникальных чисел через SET
     println("Count of unique numbers is " + array.toSet().size)
 
-        //Создаем MAP из чисел и НОД
+    //Создаем MAP из чисел и НОД
     val mapOfNumbersAndGCD = mutableMapOf<Int, Int>()
     array.forEach {
         val temp = greatestCommonDivisor(it, array.sum())
         mapOfNumbersAndGCD.put(it, temp)
     }
 
-    mapOfNumbersAndGCD.forEach{(key,value) -> println("Число <$key>, сумма <${array.sum()}>, НОД <${mapOfNumbersAndGCD[key]}>")}
+    mapOfNumbersAndGCD.forEach { (key, value) -> println("Число <$key>, сумма <${array.sum()}>, НОД <$value>") }
 }
 
 fun getArray(count: Int): ArrayList<Int> {
-    var array = arrayListOf<Int>()
+    val array = arrayListOf<Int>()
     var number: Int?
     println("Enter numbers")
     do {
         number = readLine()?.toIntOrNull()
-            if (number != null) {
-                array.add(number)
-            }
-        }while (array.size < count)
+        if (number != null) {
+            array.add(number)
+        }
+    } while (array.size < count)
     return array
 }
 
 fun getCountPositive(array: ArrayList<Int>): Int {
     var countPositive = 0
-    for (i in array) {
-        if (i > 0) countPositive++
-    }
+    array.forEach { if (it > 0) countPositive++ }
     return countPositive
 }
 
