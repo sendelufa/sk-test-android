@@ -35,12 +35,14 @@ android {
         free {
             dimension "type"
             applicationIdSuffix ".free"
-            manifestPlaceholders = [appIcon: "@mipmap/ic_launcher_free_round"]
+            manifestPlaceholders = [appIcon: "@mipmap/ic_launcher_free"]
+            
         }
         full {
             dimension "type"
             applicationIdSuffix ".full"
-            manifestPlaceholders = [appIcon: "@mipmap/ic_launcher_full_round"]
+            manifestPlaceholders = [appIcon: "@mipmap/ic_launcher_full"]
+
         }
     }
 }
