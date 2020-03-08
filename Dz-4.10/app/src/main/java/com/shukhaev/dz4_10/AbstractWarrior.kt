@@ -1,7 +1,7 @@
 package com.shukhaev.dz4_10
 
 abstract class AbstractWarrior(
-    maxHealth: Int,
+    private val maxHealth: Int,
     override val chanceToDodge: Int,
     val accuracy: Int,
     val weapon: AbstractWeapon
