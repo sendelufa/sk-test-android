@@ -6,9 +6,11 @@ abstract class AbstractWarrior(
     val accuracy: Int,
     val weapon: AbstractWeapon
 ) : Warrior {
-    var currentHealth = maxHealth
+    private var currentHealth = maxHealth
     override fun toAttack(warrior: Warrior) {
-
+        if (!weapon.isArmed) {
+            weapon.reload()
+        }else weapon.getAmmoToShoot()
     }
 
     override fun beingHit(damage: Int) {

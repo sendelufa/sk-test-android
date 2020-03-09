@@ -5,8 +5,8 @@ abstract class AbstractWeapon constructor(
     private val fireType: FireType
 
 ) {
-    var currentListAmmo: MutableList<Ammo> = mutableListOf()
-    val isArmed: Boolean = if (currentListAmmo.isEmpty()) false else true
+    private val currentListAmmo: MutableList<Ammo> = mutableListOf()
+    val isArmed get() = currentListAmmo.isNotEmpty()
 
     abstract fun createAmmo(): Ammo
     fun reload() {
@@ -16,8 +16,15 @@ abstract class AbstractWeapon constructor(
     }
 
     fun getAmmoToShoot() {
-        if (fireType is FireType.SingleShoot) currentListAmmo.removeAt(currentListAmmo.size - 1)
-        else for (i in currentListAmmo.size..currentListAmmo.size - 2) currentListAmmo.removeAt(i)
+        if (currentListAmmo.isEmpty()) {
+            reload()
+        } else {
+//            if (fireType is FireType.SingleShoot) currentListAmmo.removeAt(currentListAmmo.size - 1)
+//            else for (i in currentListAmmo.size..currentListAmmo.size - 2) currentListAmmo.removeAt(i)
+            when(fireType){
+                FireType.SingleShoot -> currentListAmmo.removeAt(currentListAmmo.size - 1)
+                FireType.RapidFire -> for (i in currentListAmmo.size-1..currentListAmmo.size - 3) currentListAmmo.removeAt(i)
+            }
+        }
     }
-
 }
