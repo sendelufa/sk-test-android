@@ -19,11 +19,11 @@ abstract class AbstractWeapon constructor(
         if (currentListAmmo.isEmpty()) {
             reload()
         } else {
-//            if (fireType is FireType.SingleShoot) currentListAmmo.removeAt(currentListAmmo.size - 1)
-//            else for (i in currentListAmmo.size..currentListAmmo.size - 2) currentListAmmo.removeAt(i)
             when(fireType){
-                FireType.SingleShoot -> currentListAmmo.removeAt(currentListAmmo.size - 1)
-                FireType.RapidFire -> for (i in currentListAmmo.size-1..currentListAmmo.size - 3) currentListAmmo.removeAt(i)
+                FireType.SingleShot -> currentListAmmo.removeAt(currentListAmmo.lastIndex)
+                FireType.RapidFire -> for(i in currentListAmmo.lastIndex downTo currentListAmmo.size - fireType.countShots){
+                        currentListAmmo.removeAt(i)
+                }
             }
         }
     }

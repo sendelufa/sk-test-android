@@ -10,7 +10,7 @@ enum class Ammo(
 
     SIMPLE_BULLET(3, 5, 2),
     BIG_BULLET(5, 10, 3),
-    NUCLEAR_BULLET(8, 15, 4);
+    SNIPER_BULLET(10, 30, 4);
 
     fun getCurrentDamage(): Int {
         return if (Random.nextInt(until = 100) <= criticalDamageChance) {
